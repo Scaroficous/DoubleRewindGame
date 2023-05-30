@@ -135,7 +135,8 @@ GameObject:
   - component: {fileID: 72376370}
   - component: {fileID: 72376369}
   - component: {fileID: 72376368}
-  m_Layer: 0
+  - component: {fileID: 72376372}
+  m_Layer: 2
   m_Name: blueGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,11 +151,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72376367}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 9.284387, z: 1}
+  m_Center: {x: 0, y: 4.142194, z: 0}
 --- !u!23 &72376369
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -220,6 +221,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &72376372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72376367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f726c46e4a356146848223f18a545af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherGoal: {fileID: 1219173249}
+  samePlyr: {fileID: 1586813373}
 --- !u!1 &111541722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1312,8 @@ GameObject:
   - component: {fileID: 905700636}
   - component: {fileID: 905700635}
   - component: {fileID: 905700639}
-  m_Layer: 0
+  - component: {fileID: 905700640}
+  m_Layer: 6
   m_Name: redPlyr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905700634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.649, y: -0.2, z: -3.5165257}
+  m_LocalPosition: {x: -3.649, y: -0.3, z: -3.5165257}
   m_LocalScale: {x: 0.82322, y: 0.36390442, z: 0.82322}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1396,9 +1412,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 1
+  justSwitched: 0
   otherPlyr: {fileID: 1586813373}
   movementList: 
   turnNumber: 0
+--- !u!114 &905700640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905700634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27187c8fa5243334091ef0a877d4db91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveScript: {fileID: 905700639}
+  sameGoal: {fileID: 1219173249}
 --- !u!1 &933608408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,7 +2105,8 @@ GameObject:
   - component: {fileID: 1219173247}
   - component: {fileID: 1219173246}
   - component: {fileID: 1219173245}
-  m_Layer: 0
+  - component: {fileID: 1219173249}
+  m_Layer: 2
   m_Name: redGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2089,11 +2121,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219173244}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 7.7209325, z: 1}
+  m_Center: {x: 0, y: 3.3604655, z: 0}
 --- !u!23 &1219173246
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2159,6 +2191,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219173249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219173244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f726c46e4a356146848223f18a545af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherGoal: {fileID: 72376372}
+  samePlyr: {fileID: 905700634}
 --- !u!1 &1225394751
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,7 +3253,8 @@ GameObject:
   - component: {fileID: 1586813375}
   - component: {fileID: 1586813374}
   - component: {fileID: 1586813378}
-  m_Layer: 0
+  - component: {fileID: 1586813379}
+  m_Layer: 7
   m_Name: bluePlyr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3286,7 +3333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586813373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.502888, y: -0.2, z: -3.5165257}
+  m_LocalPosition: {x: 1.502888, y: -0.3, z: -3.5165257}
   m_LocalScale: {x: 0.82322, y: 0.36390442, z: 0.82322}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3306,9 +3353,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  justSwitched: 0
   otherPlyr: {fileID: 905700634}
   movementList: 
   turnNumber: 0
+--- !u!114 &1586813379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586813373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27187c8fa5243334091ef0a877d4db91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveScript: {fileID: 1586813378}
+  sameGoal: {fileID: 72376372}
 --- !u!1 &1752359060
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,7 +3811,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be1c4dd885d3ed4439419db0d1516a44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3787,7 +3849,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829081831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalPosition: {x: -2, y: -0.9, z: 0}
   m_LocalScale: {x: 80.99356, y: 0.4881301, z: 76.43986}
   m_ConstrainProportionsScale: 0
   m_Children: []

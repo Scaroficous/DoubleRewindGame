@@ -9,7 +9,6 @@ public class plyrMovement : MonoBehaviour
     public bool justSwitched;
 
     public GameObject otherPlyr;
-    //public plyrMovement otherPlayerMovement;
     RaycastHit lookForWall;
     public List<int> movementList = new List<int>();
     public int turnNumber;
@@ -34,6 +33,7 @@ public class plyrMovement : MonoBehaviour
                     plyrPosition.z += 1;
                     movementList.Add(0);
                     turnNumber++;
+                    otherPlyr.GetComponent<plyrRewind>().Rewind();
                 }
             }
             else if (Input.GetKeyUp(KeyCode.D))
@@ -43,6 +43,7 @@ public class plyrMovement : MonoBehaviour
                     plyrPosition.x += 1;
                     movementList.Add(1);
                     turnNumber++;
+                    otherPlyr.GetComponent<plyrRewind>().Rewind();
                 }
             }
             else if (Input.GetKeyUp(KeyCode.S))
@@ -52,6 +53,7 @@ public class plyrMovement : MonoBehaviour
                     plyrPosition.z -= 1;
                     movementList.Add(2);
                     turnNumber++;
+                    otherPlyr.GetComponent<plyrRewind>().Rewind();
                 }
             }
             else if (Input.GetKeyUp(KeyCode.A))
@@ -61,6 +63,7 @@ public class plyrMovement : MonoBehaviour
                     plyrPosition.x -= 1;
                     movementList.Add(3);
                     turnNumber++;
+                    otherPlyr.GetComponent<plyrRewind>().Rewind();
                 }
             }
 
