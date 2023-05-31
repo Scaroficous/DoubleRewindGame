@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class goalCheck : MonoBehaviour
 {
     public goalCheck otherGoal;
-    public GameObject samePlyr;
+    //public GameObject samePlyr;
     RaycastHit lookUp;
+    public LayerMask layerToCheck;
+
     
     /* void OnTriggerEnter(Collider collision)
     {
@@ -44,7 +47,26 @@ public class goalCheck : MonoBehaviour
 
     public bool checkForPlayer()
     {
-        return (Physics.Raycast(transform.position, Vector3.up, out lookUp, 1, samePlyr.layer));        
+        Debug.Log("Check for player running");
+        if (Physics.Raycast(transform.position, Vector3.up, out lookUp, 1, layerToCheck))
+        {
+            Debug.Log("On a thing wow");
+        }
+        else
+        {
+            Debug.Log("I missed!");
+        }
+        
+        return (Physics.Raycast(transform.position, Vector3.up, out lookUp, 1, layerToCheck));        
     }
 
+    /*
+    private void Update()
+    {
+        if (Physics.Raycast(transform.position, Vector3.up, out lookUp, 1))
+        {
+            Debug.Log("On a thing wow");
+        }
+    }
+    */
 }
