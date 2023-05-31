@@ -22,7 +22,6 @@ public class plyrMovement : MonoBehaviour
     {
         turnNumber = 0;
         movementList.Add(0);
-        colLayer |= (1 << otherPlyr.layer);
     }
 
     // Update is called once per frame
@@ -36,9 +35,10 @@ public class plyrMovement : MonoBehaviour
                 if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                 {
                     plyrPosition.z += 1;
+                    transform.position = plyrPosition;
                     movementList.Add(0);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind();
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
                 }
                 justMoved = true;
             }
@@ -48,9 +48,10 @@ public class plyrMovement : MonoBehaviour
                 if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
                 {
                     plyrPosition.x += 1;
+                    transform.position = plyrPosition;
                     movementList.Add(1);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind();
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
                 }
                 justMoved = true;
             }
@@ -60,9 +61,10 @@ public class plyrMovement : MonoBehaviour
                 if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
                 {
                     plyrPosition.z -= 1;
+                    transform.position = plyrPosition;
                     movementList.Add(2);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind();
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
                 }
                 justMoved = true;
             }
@@ -72,41 +74,28 @@ public class plyrMovement : MonoBehaviour
                 if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
                 {
                     plyrPosition.x -= 1;
+                    transform.position = plyrPosition;
                     movementList.Add(3);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind();
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
                 }
                 justMoved = true;
             }
 
-            transform.position = plyrPosition;
+            
         }
-    }
-
-    private void LateUpdate()
-    {
-
-        if (justMoved)
+        if (sameGoal.checkForPlayer() && sameGoal.otherGoal.checkForPlayer())
         {
-            Debug.Log("justMoved was true and now about to run sameGoal.checkForPlayer ");
-            justMoved = false;
-            //Seeing if level complete
-            sameGoal.checkForPlayer();
-            Debug.Log("have run checkForPlayer");
-            /*
-            if (sameGoal.checkForPlayer() && sameGoal.otherGoal.checkForPlayer())
+            Debug.Log("Level Complete!");
+            if (SceneManager.GetActiveScene().buildIndex - 1 == SceneManager.sceneCountInBuildSettings)
             {
-                Debug.Log("Level Complete!");
-                if (SceneManager.GetActiveScene().buildIndex - 1 == SceneManager.sceneCountInBuildSettings)
-                {
-                    SceneManager.LoadScene(0);
-                }
-                else
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
+                SceneManager.LoadScene(0);
             }
-            */
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
+
     }
 }
