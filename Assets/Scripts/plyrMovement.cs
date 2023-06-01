@@ -27,9 +27,9 @@ public class plyrMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var plyrPosition = transform.position;
         if (selected)
         {
-            var plyrPosition = transform.position;
             if (Input.GetKeyDown(KeyCode.W))
             {
                 if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
@@ -38,9 +38,8 @@ public class plyrMovement : MonoBehaviour
                     transform.position = plyrPosition;
                     movementList.Add(0);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
                 }
-                justMoved = true;
             }
             
             else if (Input.GetKeyDown(KeyCode.D))
@@ -51,9 +50,8 @@ public class plyrMovement : MonoBehaviour
                     transform.position = plyrPosition;
                     movementList.Add(1);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
                 }
-                justMoved = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.S))
@@ -64,9 +62,8 @@ public class plyrMovement : MonoBehaviour
                     transform.position = plyrPosition;
                     movementList.Add(2);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
                 }
-                justMoved = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.A))
@@ -77,13 +74,14 @@ public class plyrMovement : MonoBehaviour
                     transform.position = plyrPosition;
                     movementList.Add(3);
                     turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.z);
+                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
                 }
-                justMoved = true;
             }
-
             
+
         }
+
+
         if (sameGoal.checkForPlayer() && sameGoal.otherGoal.checkForPlayer())
         {
             Debug.Log("Level Complete!");
@@ -96,6 +94,22 @@ public class plyrMovement : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
+        LookForGround();
+    }
 
+    private void LateUpdate()
+    {
+        
+    }
+
+    public void LookForGround()
+    {
+        if (!Physics.Raycast(transform.position, Vector3.down, out lookForWall, 1, colLayer))
+        {
+            Debug.Log(lookForWall);
+            var plyrPosition = transform.position;
+            plyrPosition.y -= 1;
+            transform.position = plyrPosition;
+        }
     }
 }

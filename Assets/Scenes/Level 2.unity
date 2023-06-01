@@ -1128,7 +1128,7 @@ MonoBehaviour:
   otherPlyr: {fileID: 1586813373}
   colLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   movementList: 
   turnNumber: 0
 --- !u!114 &905700640
@@ -1144,6 +1144,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveScript: {fileID: 905700639}
+  justWalls:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &956103154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,7 +2211,7 @@ MonoBehaviour:
   otherPlyr: {fileID: 905700634}
   colLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   movementList: 
   turnNumber: 0
 --- !u!114 &1586813379
@@ -2224,6 +2227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveScript: {fileID: 1586813378}
+  justWalls:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1612305185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,7 +2533,7 @@ GameObject:
   - component: {fileID: 1829081834}
   - component: {fileID: 1829081833}
   - component: {fileID: 1829081832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class selectPlayer : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class selectPlayer : MonoBehaviour
                 plyrClicked.transform.GetComponent<plyrMovement>().selected = true;
                 plyrClicked.transform.GetComponent<plyrMovement>().otherPlyr.GetComponent<plyrMovement>().selected = false;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
