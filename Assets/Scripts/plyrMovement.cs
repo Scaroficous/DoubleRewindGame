@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class plyrMovement : MonoBehaviour
 {
     public bool selected;
-    public bool justMoved;
-    
+    public Material plainMat;
+    public Material glowingMat;
     public goalCheck sameGoal;
     public GameObject otherPlyr;
     public LayerMask colLayer;
@@ -30,6 +30,10 @@ public class plyrMovement : MonoBehaviour
         var plyrPosition = transform.position;
         if (selected)
         {
+            //Make it glow
+            GetComponent<Renderer>().material = glowingMat; 
+
+            //Make it move
             if (Input.GetKeyDown(KeyCode.W))
             {
                 if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
@@ -80,6 +84,11 @@ public class plyrMovement : MonoBehaviour
             
 
         }
+        else
+        {
+            //Make it plain
+            GetComponent<Renderer>().material = plainMat;
+        }
 
 
         if (sameGoal.checkForPlayer() && sameGoal.otherGoal.checkForPlayer())
@@ -104,7 +113,8 @@ public class plyrMovement : MonoBehaviour
 
     public void LookForGround()
     {
-        if (!Physics.Raycast(transform.position, Vector3.down, out lookForWall, 1, colLayer))
+        if (!Physics.Raycast(transform.position, Vector3.down, out lookForWall, 1, colLayer)
+        && !(transform.position.x == otherPlyr.transform.position.x && transform.position.y == otherPlyr.transform.position.y + 1 && transform.position.z == otherPlyr.transform.position.z))
         {
             Debug.Log(lookForWall);
             var plyrPosition = transform.position;

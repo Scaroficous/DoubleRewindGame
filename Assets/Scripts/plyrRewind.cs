@@ -26,8 +26,6 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.z -= 1;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
-                        //moveScript.LookForGround();
-                        //moveScript.otherPlyr.GetComponent<plyrMovement>().LookForGround();
                     }
                 }
                 break;
@@ -40,8 +38,6 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.x -= 1;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
-                        //moveScript.LookForGround();
-                        //moveScript.otherPlyr.GetComponent<plyrMovement>().LookForGround();
                     }
                 }
                 break;
@@ -54,8 +50,6 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.z += 1;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
-                        //moveScript.LookForGround();
-                        //moveScript.otherPlyr.GetComponent<plyrMovement>().LookForGround();
                     }
                 }
                 break;
@@ -69,8 +63,6 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.x += 1;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
-                        //moveScript.LookForGround();
-                        //moveScript.otherPlyr.GetComponent<plyrMovement>().LookForGround();
                     }
                 }
                 break;
