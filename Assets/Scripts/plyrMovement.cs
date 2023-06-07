@@ -91,7 +91,7 @@ public class plyrMovement : MonoBehaviour
         }
 
 
-        if (sameGoal.checkForPlayer() && sameGoal.otherGoal.checkForPlayer())
+        if (sameGoal.CheckForPlayer() && sameGoal.otherGoal.CheckForPlayer())
         {
             Debug.Log("Level Complete!");
             if (SceneManager.GetActiveScene().buildIndex - 1 == SceneManager.sceneCountInBuildSettings)

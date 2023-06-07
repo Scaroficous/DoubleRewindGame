@@ -11,7 +11,7 @@ public class goalCheck : MonoBehaviour
     RaycastHit lookUp;
     public LayerMask layerToCheck;
 
-    public bool checkForPlayer()
+    public bool CheckForPlayer()
     {
         return (Physics.Raycast(transform.position, Vector3.up, out lookUp, 1, layerToCheck));        
     }
