@@ -13,7 +13,6 @@ public class plyrRewind : MonoBehaviour
         if (moveScript.turnNumber > 0)
         {
             var plyrPosition = transform.position;
-            var otherPlyrPosition = moveScript.otherPlyr.transform.position;
             switch (moveScript.movementList[moveScript.turnNumber])
             {
                 default: break;
@@ -23,7 +22,7 @@ public class plyrRewind : MonoBehaviour
                     if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, justWalls) 
                     && !(plyrPosition.x == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z - 1 == otherPlyrZ))
                     {
-                        plyrPosition.z -= 1;
+                        plyrPosition.z--;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
                     }
@@ -32,10 +31,10 @@ public class plyrRewind : MonoBehaviour
 
                 case 1:
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, justWalls) && plyrPosition != otherPlyrPosition
+                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, justWalls) 
                     && !(plyrPosition.x - 1 == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z == otherPlyrZ))
                     {
-                        plyrPosition.x -= 1;
+                        plyrPosition.x--;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
                     }
@@ -44,10 +43,10 @@ public class plyrRewind : MonoBehaviour
 
                 case 2:
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, justWalls) && plyrPosition != otherPlyrPosition
+                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, justWalls) 
                     && !(plyrPosition.x == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z + 1 == otherPlyrZ))
                     {
-                        plyrPosition.z += 1;
+                        plyrPosition.z++;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
                     }
@@ -56,11 +55,10 @@ public class plyrRewind : MonoBehaviour
 
                 case 3:
                 {
-                    otherPlyrPosition.x -= 1;
-                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, justWalls) && plyrPosition != otherPlyrPosition
+                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, justWalls) 
                     && !(plyrPosition.x + 1 == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z == otherPlyrZ))
                     {
-                        plyrPosition.x += 1;
+                        plyrPosition.x++;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
                     }
@@ -68,12 +66,7 @@ public class plyrRewind : MonoBehaviour
                 break;
             }
             transform.position = plyrPosition;
-            moveScript.LookForGround();
         }
-        else
-        {
-           moveScript.LookForGround();
-        }
-        
+        moveScript.LookForGround();
     }
 }

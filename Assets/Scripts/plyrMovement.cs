@@ -38,7 +38,7 @@ public class plyrMovement : MonoBehaviour
             {
                 if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                 {
-                    plyrPosition.z += 1;
+                    plyrPosition.z++;
                     transform.position = plyrPosition;
                     movementList.Add(0);
                     turnNumber++;
@@ -50,7 +50,7 @@ public class plyrMovement : MonoBehaviour
             {
                 if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
                 {
-                    plyrPosition.x += 1;
+                    plyrPosition.x++;
                     transform.position = plyrPosition;
                     movementList.Add(1);
                     turnNumber++;
@@ -62,7 +62,7 @@ public class plyrMovement : MonoBehaviour
             {
                 if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
                 {
-                    plyrPosition.z -= 1;
+                    plyrPosition.z--;
                     transform.position = plyrPosition;
                     movementList.Add(2);
                     turnNumber++;
@@ -74,7 +74,7 @@ public class plyrMovement : MonoBehaviour
             {
                 if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
                 {
-                    plyrPosition.x -= 1;
+                    plyrPosition.x--;
                     transform.position = plyrPosition;
                     movementList.Add(3);
                     turnNumber++;
@@ -106,11 +106,6 @@ public class plyrMovement : MonoBehaviour
         LookForGround();
     }
 
-    private void LateUpdate()
-    {
-        
-    }
-
     public void LookForGround()
     {
         if (!Physics.Raycast(transform.position, Vector3.down, out lookForWall, 1, colLayer)
@@ -118,7 +113,7 @@ public class plyrMovement : MonoBehaviour
         {
             Debug.Log(lookForWall);
             var plyrPosition = transform.position;
-            plyrPosition.y -= 1;
+            plyrPosition.y--;
             transform.position = plyrPosition;
         }
     }
