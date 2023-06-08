@@ -7,12 +7,14 @@ public class plyrRewind : MonoBehaviour
     public plyrMovement moveScript;
     public LayerMask justWalls;
     RaycastHit lookForWall;
+
     // Start is called before the first frame update
     public void Rewind(float otherPlyrX, float otherPlyrY, float otherPlyrZ)
     {
         if (moveScript.turnNumber > 0)
         {
             var plyrPosition = transform.position;
+
             switch (moveScript.movementList[moveScript.turnNumber])
             {
                 default: break;
@@ -65,8 +67,10 @@ public class plyrRewind : MonoBehaviour
                 }
                 break;
             }
+
             transform.position = plyrPosition;
         }
+
         moveScript.LookForGround();
     }
 }
