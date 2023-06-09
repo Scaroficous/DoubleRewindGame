@@ -48,7 +48,12 @@ public class plyrMovement : MonoBehaviour
             //Make it glow
             GetComponent<Renderer>().material = glowingMat; 
 
-            //Make it move
+            //Make it move in four cardinal directions and store that movement
+            //0 is forward
+            //1 is right
+            //2 is back 
+            //3 is left
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
@@ -96,8 +101,6 @@ public class plyrMovement : MonoBehaviour
                     otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
                 }
             }
-            
-
         }
         else
         {
@@ -105,7 +108,7 @@ public class plyrMovement : MonoBehaviour
             GetComponent<Renderer>().material = plainMat;
         }
 
-
+        //See if both the characters are on their goals, and if so, go to the next scene 
         if (sameGoal.CheckForPlayer() && sameGoal.otherGoal.CheckForPlayer())
         {
             Debug.Log("Level Complete!");
@@ -122,12 +125,13 @@ public class plyrMovement : MonoBehaviour
         LookForGround();
     }
 
+    //LookForGround checks if something's below the character, and if there isn't, character falls down one unit
     public void LookForGround()
     {
         if (!Physics.Raycast(transform.position, Vector3.down, out lookForWall, 1, colLayer)
-        && !(transform.position.x == otherPlyr.transform.position.x && transform.position.y == otherPlyr.transform.position.y + 1 && transform.position.z == otherPlyr.transform.position.z))
+        //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
+        && !(transform.position.x == otherPlyr.transform.position.x && transform.position.y == otherPlyr.transform.position.y + 1 && transform.position.z == otherPlyr.transform.position.z)) 
         {
-            Debug.Log(lookForWall);
             var plyrPosition = transform.position;
             plyrPosition.y--;
             transform.position = plyrPosition;
