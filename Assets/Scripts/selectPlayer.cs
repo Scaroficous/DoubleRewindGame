@@ -8,8 +8,11 @@ public class selectPlayer : MonoBehaviour
     private RaycastHit plyrClicked;
     private Ray clickRay;
     public LayerMask players;
-    
+    public int mouseSensitivity = 1000;
 
+    private Vector2 mousePosition;
+    private float xRotation;
+    private float yRotation;
     // Update is called once per frame
     void Update()
     {
@@ -30,5 +33,22 @@ public class selectPlayer : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        /*
+        //Rotate Camera
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            //Get mouse input
+            mousePosition.x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            mousePosition.y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+            //Rotate Camera
+            xRotation -= mousePosition.y;
+            yRotation -= mousePosition.x;
+            xRotation = Mathf.Clamp(xRotation, -180, 0);
+            transform.parent.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+            //transform.parent.Rotate(Vector3.up * mousePosition.x);
+        }
+        */
     }
 }

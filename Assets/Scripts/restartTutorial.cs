@@ -8,8 +8,9 @@ public class restartTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Only use this script on the red player in level 10 - it's for a very specific tutorial case
-        if (transform.position.y < 2)
+        //Only use ONLY in scenes where if this character is below a certain point the player has to restart
+        //It turns on a canvas that tells the player how to restart
+        if (transform.position.y < 1)
         {
             canvasMessage.SetActive(true);
         }

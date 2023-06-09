@@ -22,20 +22,6 @@ public class plyrMovement : MonoBehaviour
     {
         turnNumber = 0;
         movementList.Add(0);
-        /*
-        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
-        if (GetComponent<LayerMask>() == redLayer)
-        {
-            Debug.Log("dasioufhsoudfh");
-            sameGoal = GameObject.Find("redGoal").GetComponent<goalCheck>();
-            otherPlyr = GameObject.Find("bluePlyr");
-        }
-        else
-        {
-            sameGoal = GameObject.Find("blueGoal").GetComponent<goalCheck>();
-            otherPlyr = GameObject.Find("redPlyr");
-        }
-    */        
     }
 
     // Update is called once per frame

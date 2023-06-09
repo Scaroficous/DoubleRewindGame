@@ -80,7 +80,7 @@ public class plyrRewind : MonoBehaviour
 
             transform.position = plyrPosition;
         }
-
+        //In case the player rewinds off a ledge
         moveScript.LookForGround();
     }
 }
