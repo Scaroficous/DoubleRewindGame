@@ -34,21 +34,21 @@ public class selectPlayer : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        /*
+        
         //Rotate Camera
         if (Input.GetKey(KeyCode.Mouse1))
         {
             //Get mouse input
-            mousePosition.x = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            mousePosition.x = -Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             mousePosition.y = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
             //Rotate Camera
             xRotation -= mousePosition.y;
             yRotation -= mousePosition.x;
-            xRotation = Mathf.Clamp(xRotation, -180, 0);
+            xRotation = Mathf.Clamp(xRotation, -89, 0);
             transform.parent.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
             //transform.parent.Rotate(Vector3.up * mousePosition.x);
         }
-        */
+        
     }
 }

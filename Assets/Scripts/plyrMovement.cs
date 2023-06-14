@@ -22,6 +22,7 @@ public class plyrMovement : MonoBehaviour
     {
         turnNumber = 0;
         movementList.Add(0);
+
     }
 
     // Update is called once per frame
@@ -42,49 +43,218 @@ public class plyrMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 315 
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 360
+                || GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 0
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
-                    plyrPosition.z++;
-                    transform.position = plyrPosition;
-                    movementList.Add(0);
-                    turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    //Debug.Log(GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y);
+                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z++;
+                        transform.position = plyrPosition;
+                        movementList.Add(0);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x++;
+                        transform.position = plyrPosition;
+                        movementList.Add(1);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z--;
+                        transform.position = plyrPosition;
+                        movementList.Add(2);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x--;
+                        transform.position = plyrPosition;
+                        movementList.Add(3);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
                 }
             }
-            
+
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 315
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 360
+                || GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 0
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
-                    plyrPosition.x++;
-                    transform.position = plyrPosition;
-                    movementList.Add(1);
-                    turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x++;
+                        transform.position = plyrPosition;
+                        movementList.Add(1);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z--;
+                        transform.position = plyrPosition;
+                        movementList.Add(2);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x--;
+                        transform.position = plyrPosition;
+                        movementList.Add(3);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z++;
+                        transform.position = plyrPosition;
+                        movementList.Add(0);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
                 }
             }
 
             else if (Input.GetKeyDown(KeyCode.S))
             {
-                if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 315
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 360
+                || GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 0
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
-                    plyrPosition.z--;
-                    transform.position = plyrPosition;
-                    movementList.Add(2);
-                    turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z--;
+                        transform.position = plyrPosition;
+                        movementList.Add(2);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x--;
+                        transform.position = plyrPosition;
+                        movementList.Add(3);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z++;
+                        transform.position = plyrPosition;
+                        movementList.Add(0);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x++;
+                        transform.position = plyrPosition;
+                        movementList.Add(1);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
                 }
             }
 
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 315
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 360
+                || GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 0
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
-                    plyrPosition.x--;
-                    transform.position = plyrPosition;
-                    movementList.Add(3);
-                    turnNumber++;
-                    otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x--;
+                        transform.position = plyrPosition;
+                        movementList.Add(3);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z++;
+                        transform.position = plyrPosition;
+                        movementList.Add(0);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.x++;
+                        transform.position = plyrPosition;
+                        movementList.Add(1);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
+                && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
+                {
+                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    {
+                        plyrPosition.z--;
+                        transform.position = plyrPosition;
+                        movementList.Add(2);
+                        turnNumber++;
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                    }
                 }
             }
         }
