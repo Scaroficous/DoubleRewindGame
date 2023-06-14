@@ -30,6 +30,14 @@ public class plyrMovement : MonoBehaviour
     {
         var plyrPosition = transform.position;
 
+        //See if both the characters are on their goals, and if so, start the timer
+        if (selected && sameGoal.CheckForPlayer() && sameGoal.otherGoal.CheckForPlayer())
+        {
+            selected = false;
+            Debug.Log("Level Complete!");
+            GameObject timer = Instantiate(Resources.Load("Prefabs/endLevelTimer", typeof(GameObject))) as GameObject;
+        }
+
         if (selected)
         {
             //Make it glow
@@ -262,20 +270,6 @@ public class plyrMovement : MonoBehaviour
         {
             //Make it plain
             GetComponent<Renderer>().material = plainMat;
-        }
-
-        //See if both the characters are on their goals, and if so, go to the next scene 
-        if (sameGoal.CheckForPlayer() && sameGoal.otherGoal.CheckForPlayer())
-        {
-            Debug.Log("Level Complete!");
-            if (SceneManager.GetActiveScene().buildIndex - 1 == SceneManager.sceneCountInBuildSettings)
-            {
-                SceneManager.LoadScene(0);
-            }
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
         }
 
         LookForGround();
