@@ -279,6 +279,12 @@ public class plyrMovement : MonoBehaviour
         }
 
         LookForGround();
+
+        //See if this player has fallen off the world, and if so, restart the level
+        if (transform.position.y < -1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     //LookForGround checks if something's below the character, and if there isn't, character falls down one unit
