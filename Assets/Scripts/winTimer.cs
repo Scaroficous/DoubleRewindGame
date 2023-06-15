@@ -7,11 +7,17 @@ using UnityEngine.SceneManagement;
 public class winTimer : MonoBehaviour
 {
     public float count;
+    public GameObject floor;
+    public Material winnerGold;
 
     // Start is called before the first frame update
     void Start()
     {
         count = 60;
+
+        //Make the floor shiny because the player won
+        floor = GameObject.FindGameObjectWithTag("Floor");
+        floor.GetComponent<Renderer>().material = winnerGold;
     }
 
     // Update is called once per frame

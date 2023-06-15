@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
+  floor: {fileID: 0}
+  winnerGold: {fileID: 2100000, guid: cb3327a281e92484c831175d13f07aac, type: 2}
