@@ -35,7 +35,7 @@ public class plyrMovement : MonoBehaviour
         {
             selected = false;
             Debug.Log("Level Complete!");
-            GameObject timer = Instantiate(Resources.Load("Prefabs/endLevelTimer", typeof(GameObject))) as GameObject;
+            Instantiate(Resources.Load("Prefabs/endLevelTimer", typeof(GameObject)));
         }
 
         if (selected)
