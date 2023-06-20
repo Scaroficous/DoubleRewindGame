@@ -8,7 +8,7 @@ public class selectPlayer : MonoBehaviour
     private RaycastHit plyrClicked;
     private Ray clickRay;
     public LayerMask players;
-    public int mouseSensitivity = 1000;
+    public int mouseSensitivity = 3000;
 
     private Vector2 mousePosition;
     private float xRotation;
@@ -16,6 +16,7 @@ public class selectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mouseSensitivity = 3000;
         //Sees if the player is clicking on a character, and if so, selecting that character
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

@@ -5081,7 +5081,7 @@ MonoBehaviour:
   players:
     serializedVersion: 2
     m_Bits: 192
-  mouseSensitivity: 1000
+  mouseSensitivity: 3000
 --- !u!81 &2061445695
 AudioListener:
   m_ObjectHideFlags: 0
