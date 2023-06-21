@@ -13,7 +13,7 @@ public class plyrRewind : MonoBehaviour
     {
         if (moveScript.turnNumber > 0)
         {
-            var plyrPosition = transform.position;
+            var plyrPosition = transform.parent.transform.position;
 
             //Checks what the previous move was and does the opposite, and removes that movement
             //0 is forward
@@ -27,7 +27,7 @@ public class plyrRewind : MonoBehaviour
 
                 case 0:
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, justWalls)
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z - 1 == otherPlyrZ))
                     {
@@ -40,7 +40,7 @@ public class plyrRewind : MonoBehaviour
 
                 case 1:
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, justWalls)
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x - 1 == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z == otherPlyrZ))
                     {
@@ -53,7 +53,7 @@ public class plyrRewind : MonoBehaviour
 
                 case 2:
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, justWalls)
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z + 1 == otherPlyrZ))
                     {
@@ -66,7 +66,7 @@ public class plyrRewind : MonoBehaviour
 
                 case 3:
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, justWalls)
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x + 1 == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z == otherPlyrZ))
                     {
@@ -78,7 +78,7 @@ public class plyrRewind : MonoBehaviour
                 break;
             }
 
-            transform.position = plyrPosition;
+            transform.parent.transform.position = plyrPosition;
         }
         //In case the player rewinds off a ledge
         moveScript.LookForGround();

@@ -22,13 +22,23 @@ public class plyrMovement : MonoBehaviour
     {
         turnNumber = 0;
         movementList.Add(0);
-
+        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+        if (gameObject.layer == redLayer)
+        {
+            sameGoal = GameObject.Find("redGoal").GetComponent<goalCheck>();
+            otherPlyr = GameObject.Find("bluePlyr");
+        }
+        else
+        {
+            sameGoal = GameObject.Find("blueGoal").GetComponent<goalCheck>();
+            otherPlyr = GameObject.Find("redPlyr");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        var plyrPosition = transform.position;
+        var plyrPosition = transform.parent.transform.position;
 
         //See if both the characters are on their goals, and if so, start the timer
         if (selected && sameGoal.CheckForPlayer() && sameGoal.otherGoal.CheckForPlayer())
@@ -57,49 +67,49 @@ public class plyrMovement : MonoBehaviour
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
                     //Debug.Log(GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y);
-                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
             }
@@ -111,49 +121,49 @@ public class plyrMovement : MonoBehaviour
                 || GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 0
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
             }
@@ -165,49 +175,49 @@ public class plyrMovement : MonoBehaviour
                 || GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 0
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
             }
@@ -219,49 +229,49 @@ public class plyrMovement : MonoBehaviour
                 || GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 0
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 45)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.left, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 135)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.forward, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 225)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.right, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.x++;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
                 && GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y < 315)
                 {
-                    if (!Physics.Raycast(transform.position, Vector3.back, out lookForWall, 1, colLayer))
+                    if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
                         plyrPosition.z--;
-                        transform.position = plyrPosition;
+                        transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
                         turnNumber++;
-                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.position.x, transform.position.y, transform.position.z);
+                        otherPlyr.GetComponent<plyrRewind>().Rewind(transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
                     }
                 }
             }
@@ -275,22 +285,26 @@ public class plyrMovement : MonoBehaviour
         LookForGround();
 
         //See if this player has fallen off the world, and if so, restart the level
-        if (transform.position.y < -1)
+        if (transform.parent.transform.position.y < -1)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        transform.localPosition = new Vector3(0, 0, 0);
     }
 
     //LookForGround checks if something's below the character, and if there isn't, character falls down one unit
     public void LookForGround()
     {
-        if (!Physics.Raycast(transform.position, Vector3.down, out lookForWall, 1, colLayer)
+        if (!Physics.Raycast(transform.parent.transform.position, Vector3.down, out lookForWall, 1, colLayer)
         //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
-        && !(transform.position.x == otherPlyr.transform.position.x && transform.position.y == otherPlyr.transform.position.y + 1 && transform.position.z == otherPlyr.transform.position.z)) 
+        && !(transform.parent.transform.position.x == otherPlyr.transform.parent.transform.position.x 
+        && transform.parent.transform.position.y == otherPlyr.transform.parent.transform.position.y + 1 
+        && transform.parent.transform.position.z == otherPlyr.transform.parent.transform.position.z)) 
         {
-            var plyrPosition = transform.position;
+            var plyrPosition = transform.parent.transform.position;
             plyrPosition.y--;
-            transform.position = plyrPosition;
+            transform.parent.transform.position = plyrPosition;
         }
     }
 }
