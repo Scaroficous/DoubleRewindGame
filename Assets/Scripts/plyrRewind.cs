@@ -108,7 +108,5 @@ public class plyrRewind : MonoBehaviour
 
             transform.parent.transform.position = plyrPosition;
         }
-        //In case the player rewinds off a ledge
-        //if (animationDone)moveScript.LookForGround();
     }
 }
