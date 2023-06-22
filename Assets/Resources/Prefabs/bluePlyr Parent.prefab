@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 9040248491616162526}
   - component: {fileID: 4546707440516476421}
   - component: {fileID: 4030622298019794334}
+  - component: {fileID: 3944309199789910253}
   m_Layer: 7
   m_Name: bluePlyr
   m_TagString: Untagged
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  animationDone: 1
   plainMat: {fileID: 2100000, guid: 2d5b95d8a9e697947ac57c1e4c5e755f, type: 2}
   glowingMat: {fileID: 2100000, guid: 262e3cb059a973c4fa253de7a869a3f4, type: 2}
   sameGoal: {fileID: 0}
@@ -154,6 +156,7 @@ MonoBehaviour:
     m_Bits: 72
   movementList: 
   turnNumber: 0
+  animator: {fileID: 3944309199789910253}
 --- !u!114 &4030622298019794334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,3 +173,23 @@ MonoBehaviour:
   justWalls:
     serializedVersion: 2
     m_Bits: 8
+--- !u!95 &3944309199789910253
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312351755229449515}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23b57cdcdb659734a92a83904261e972, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -27,6 +27,8 @@ public class plyrRewind : MonoBehaviour
 
                 case 0:
                 {
+                    transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
+
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z - 1 == otherPlyrZ))
@@ -34,12 +36,19 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.z--;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
+                        moveScript.animator.SetTrigger("Player Move");
+                    }
+                    else
+                    {
+                        moveScript.animator.SetTrigger("Player Bump");
                     }
                 }
                 break;
 
                 case 1:
                 {
+                    transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 270, transform.localEulerAngles.z);
+
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x - 1 == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z == otherPlyrZ))
@@ -47,12 +56,19 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.x--;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
+                        moveScript.animator.SetTrigger("Player Move");
+                    }
+                    else
+                    {
+                        moveScript.animator.SetTrigger("Player Bump");
                     }
                 }
                 break;
 
                 case 2:
                 {
+                    transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
+
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z + 1 == otherPlyrZ))
@@ -60,12 +76,19 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.z++;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
+                        moveScript.animator.SetTrigger("Player Move");
+                    }
+                    else
+                    {
+                        moveScript.animator.SetTrigger("Player Bump");
                     }
                 }
                 break;
 
                 case 3:
                 {
+                    transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
+
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, justWalls)
                     //The following line checks the other player's transform, because the physics may not have updated if both characters are moving at the same time, so a raycast won't work
                     && !(plyrPosition.x + 1 == otherPlyrX && plyrPosition.y == otherPlyrY && plyrPosition.z == otherPlyrZ))
@@ -73,6 +96,11 @@ public class plyrRewind : MonoBehaviour
                         plyrPosition.x++;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
                         moveScript.turnNumber--;
+                        moveScript.animator.SetTrigger("Player Move");
+                    }
+                    else
+                    {
+                        moveScript.animator.SetTrigger("Player Bump");
                     }
                 }
                 break;
@@ -81,6 +109,6 @@ public class plyrRewind : MonoBehaviour
             transform.parent.transform.position = plyrPosition;
         }
         //In case the player rewinds off a ledge
-        moveScript.LookForGround();
+        //if (animationDone)moveScript.LookForGround();
     }
 }

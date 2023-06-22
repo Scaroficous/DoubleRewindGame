@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 1566651032970702521}
   - component: {fileID: 8805273313897067149}
   - component: {fileID: 4769226383546359482}
+  - component: {fileID: 3550565022958797366}
   m_Layer: 6
   m_Name: redPlyr
   m_TagString: Untagged
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 1
+  animationDone: 1
   plainMat: {fileID: 2100000, guid: 2df7db9f026b82e4ca9245c81e096166, type: 2}
   glowingMat: {fileID: 2100000, guid: cd2496591f6c3924b8e0ad9fc4d7bc72, type: 2}
   sameGoal: {fileID: 0}
@@ -154,6 +156,7 @@ MonoBehaviour:
     m_Bits: 136
   movementList: 
   turnNumber: 0
+  animator: {fileID: 3550565022958797366}
 --- !u!114 &4769226383546359482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,3 +173,23 @@ MonoBehaviour:
   justWalls:
     serializedVersion: 2
     m_Bits: 8
+--- !u!95 &3550565022958797366
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935793349864197856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f8043bda541527d42bda8788bc0903e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
