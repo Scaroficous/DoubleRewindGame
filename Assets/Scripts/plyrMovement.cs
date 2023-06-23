@@ -19,15 +19,14 @@ public class plyrMovement : MonoBehaviour
     public int turnNumber;
     public Animator animator;
 
-    private float lastParentRotate;
-    
+    private bool canvasExists;
 
     RaycastHit lookForWall;
     // Start is called before the first frame update
     void Start()
     {
+        canvasExists = false;
         animationDone = true;
-        lastParentRotate = transform.parent.transform.localEulerAngles.y;
         turnNumber = 0;
         movementList.Add(0);
         LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
@@ -113,6 +112,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
@@ -131,6 +135,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
@@ -149,6 +158,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
@@ -167,6 +181,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
             }
@@ -191,6 +210,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
@@ -209,6 +233,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
@@ -227,6 +256,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
@@ -245,6 +279,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
             }
@@ -269,6 +308,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
@@ -287,6 +331,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
@@ -305,6 +354,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
@@ -323,6 +377,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
             }
@@ -347,6 +406,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 45
@@ -365,6 +429,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 135
@@ -383,6 +452,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
                 else if (GameObject.FindGameObjectWithTag("MainCamera").transform.parent.transform.localEulerAngles.y >= 225
@@ -401,6 +475,11 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
+                        if (!canvasExists)
+                        {
+                            Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
+                            canvasExists = true;
+                        }
                     }
                 }
             }
