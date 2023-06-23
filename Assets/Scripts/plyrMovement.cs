@@ -11,6 +11,7 @@ public class plyrMovement : MonoBehaviour
     public bool animationDone = true;
     public Material plainMat;
     public Material glowingMat;
+    public Transform handPivot;
     public goalCheck sameGoal;
     public GameObject otherPlyr;
     public LayerMask colLayer;
@@ -18,11 +19,15 @@ public class plyrMovement : MonoBehaviour
     public int turnNumber;
     public Animator animator;
 
+    private float lastParentRotate;
+    
+
     RaycastHit lookForWall;
     // Start is called before the first frame update
     void Start()
     {
         animationDone = true;
+        lastParentRotate = transform.parent.transform.localEulerAngles.y;
         turnNumber = 0;
         movementList.Add(0);
         LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
@@ -51,9 +56,13 @@ public class plyrMovement : MonoBehaviour
             Instantiate(Resources.Load("Prefabs/endLevelTimer", typeof(GameObject)));
         }
 
-        //Make it glow
+        //Turn the clock hand
+        handPivot.eulerAngles = new Vector3 (0, 30 * turnNumber, 0);
+        
+
         if (selected)
         {
+            //Make it glow
             GetComponent<Renderer>().material = glowingMat;
         }
         else
@@ -62,6 +71,7 @@ public class plyrMovement : MonoBehaviour
             GetComponent<Renderer>().material = plainMat;
         }
 
+        //handPivot.eulerAngles = rotate;
 
         if (animationDone)
         {
@@ -395,7 +405,6 @@ public class plyrMovement : MonoBehaviour
                 }
             }
         }
-
     }
 
     //LookForGround checks if something's below the character, and if there isn't, character falls down one unit
