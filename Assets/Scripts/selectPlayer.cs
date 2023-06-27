@@ -48,7 +48,7 @@ public class selectPlayer : MonoBehaviour
             yRotation -= mousePosition.x;
             xRotation = Mathf.Clamp(xRotation, -89, 0);
             transform.parent.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
-            //transform.parent.Rotate(Vector3.up * mousePosition.x);
+            
         }
         
     }
