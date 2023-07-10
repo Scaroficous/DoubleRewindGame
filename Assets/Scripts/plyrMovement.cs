@@ -112,7 +112,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -135,7 +135,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -158,7 +158,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -181,7 +181,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -210,7 +210,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -233,7 +233,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -256,7 +256,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -279,7 +279,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -308,7 +308,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -331,7 +331,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -354,7 +354,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -377,7 +377,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -406,7 +406,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -429,7 +429,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -452,7 +452,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
@@ -475,7 +475,7 @@ public class plyrMovement : MonoBehaviour
                     else
                     {
                         animator.SetTrigger("Player Bump");
-                        if (!canvasExists)
+                        if (!canvasExists && (turnNumber >= 3 || otherPlyr.GetComponent<plyrMovement>().turnNumber >= 3))
                         {
                             Instantiate(Resources.Load("Prefabs/Canvas", typeof(GameObject)));
                             canvasExists = true;
