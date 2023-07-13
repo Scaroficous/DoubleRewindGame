@@ -30,7 +30,7 @@ public class selectPlayer : MonoBehaviour
         }
 
         //Allows the player to restart the current level/puzzle
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && (GameObject.Find("endLevelTimer(Clone)") == null))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
