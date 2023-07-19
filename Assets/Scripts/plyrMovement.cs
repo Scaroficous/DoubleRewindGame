@@ -82,6 +82,9 @@ public class plyrMovement : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             transform.position = transform.parent.transform.position;
+
+            //Tell the Animator to return to Default State
+            animator.SetTrigger("Animation Done");
         }
 
         if (selected && animationDone)
