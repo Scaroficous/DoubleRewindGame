@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ public class plyrMovement : MonoBehaviour
     public GameObject otherPlyr;
     public LayerMask colLayer;
     public List<int> movementList = new List<int>();
+    public List<Object> footstepList = new List<Object>();
     public int turnNumber;
     public Animator animator;
 
@@ -105,6 +107,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
                         plyrPosition.z++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
@@ -128,6 +139,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
                         plyrPosition.x++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
@@ -151,6 +171,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
                         plyrPosition.z--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
@@ -174,6 +203,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 270, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
                         plyrPosition.x--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
@@ -203,6 +241,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
                         plyrPosition.x++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
@@ -226,6 +273,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
                         plyrPosition.z--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
@@ -249,6 +305,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 270, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
                         plyrPosition.x--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
@@ -272,6 +337,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
                         plyrPosition.z++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
@@ -301,6 +375,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
                         plyrPosition.z--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
@@ -324,6 +407,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 270, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
                         plyrPosition.x--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
@@ -347,6 +439,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
                         plyrPosition.z++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
@@ -370,6 +471,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
                         plyrPosition.x++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
@@ -399,6 +509,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 270, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.left, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 90, 0)));
+                        }
                         plyrPosition.x--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(3);
@@ -422,6 +541,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.forward, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 180, 0)));
+                        }
                         plyrPosition.z++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(0);
@@ -445,6 +573,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.right, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 270, 0)));
+                        }
                         plyrPosition.x++;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(1);
@@ -468,6 +605,15 @@ public class plyrMovement : MonoBehaviour
                     transform.parent.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
                     if (!Physics.Raycast(transform.parent.transform.position, Vector3.back, out lookForWall, 1, colLayer))
                     {
+                        LayerMask redLayer = LayerMask.NameToLayer("RedPlayer");
+                        if (gameObject.layer == redLayer)
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/RedFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
+                        else
+                        {
+                            footstepList.Add(Instantiate(Resources.Load("Prefabs/BlueFootsteps", typeof(GameObject)), new Vector3 (transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.Euler(0, 0, 0)));
+                        }
                         plyrPosition.z--;
                         transform.parent.transform.position = plyrPosition;
                         movementList.Add(2);
@@ -486,6 +632,33 @@ public class plyrMovement : MonoBehaviour
                     }
                 }
             }
+        }
+
+        //Manage the opacity of the footsteps
+        for (var i = 0; i < turnNumber; i++)
+        {
+            var footstepColor = footstepList[i].GetComponent<MeshRenderer>().material.color;
+            if (turnNumber - i == 1)
+            {
+                footstepColor.a = 1;
+            }
+            else if (turnNumber - i == 2)
+            {
+                footstepColor.a = 0.5f;
+            }
+            else if (turnNumber - i == 3)
+            {
+                footstepColor.a = 0.4f;
+            }
+            else if (turnNumber - i == 4)
+            {
+                footstepColor.a = 0.1f;
+            }
+            else 
+            {
+                footstepColor.a = 0;
+            }
+            footstepList[i].GetComponent<MeshRenderer>().material.color = footstepColor;
         }
     }
 

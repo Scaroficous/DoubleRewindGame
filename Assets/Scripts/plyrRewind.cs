@@ -35,6 +35,8 @@ public class plyrRewind : MonoBehaviour
                     {
                         plyrPosition.z--;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
+                        Destroy(moveScript.footstepList[moveScript.turnNumber - 1]);
+                        moveScript.footstepList.RemoveAt(moveScript.turnNumber - 1);
                         moveScript.turnNumber--;
                         moveScript.animator.SetTrigger("Player Move");
                     }
@@ -55,6 +57,8 @@ public class plyrRewind : MonoBehaviour
                     {
                         plyrPosition.x--;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
+                        Destroy(moveScript.footstepList[moveScript.turnNumber - 1]);
+                        moveScript.footstepList.RemoveAt(moveScript.turnNumber - 1);
                         moveScript.turnNumber--;
                         moveScript.animator.SetTrigger("Player Move");
                     }
@@ -75,6 +79,8 @@ public class plyrRewind : MonoBehaviour
                     {
                         plyrPosition.z++;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
+                        Destroy(moveScript.footstepList[moveScript.turnNumber - 1]);
+                        moveScript.footstepList.RemoveAt(moveScript.turnNumber - 1);
                         moveScript.turnNumber--;
                         moveScript.animator.SetTrigger("Player Move");
                     }
@@ -95,6 +101,8 @@ public class plyrRewind : MonoBehaviour
                     {
                         plyrPosition.x++;
                         moveScript.movementList.RemoveAt(moveScript.turnNumber);
+                        Destroy(moveScript.footstepList[moveScript.turnNumber - 1]);
+                        moveScript.footstepList.RemoveAt(moveScript.turnNumber - 1);
                         moveScript.turnNumber--;
                         moveScript.animator.SetTrigger("Player Move");
                     }
