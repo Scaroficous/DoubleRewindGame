@@ -644,15 +644,15 @@ public class plyrMovement : MonoBehaviour
             }
             else if (turnNumber - i == 2)
             {
-                footstepColor.a = 0.5f;
+                footstepColor.a = 0.8f;
             }
             else if (turnNumber - i == 3)
             {
-                footstepColor.a = 0.4f;
+                footstepColor.a = 0.6f;
             }
             else if (turnNumber - i == 4)
             {
-                footstepColor.a = 0.1f;
+                footstepColor.a = 0.5f;
             }
             else 
             {
