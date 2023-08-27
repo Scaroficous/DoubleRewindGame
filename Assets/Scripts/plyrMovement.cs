@@ -20,6 +20,7 @@ public class plyrMovement : MonoBehaviour
     public List<Object> footstepList = new List<Object>();
     public int turnNumber;
     public Animator animator;
+    public float timeElapsed;
 
     private bool canvasExists;
 
@@ -27,6 +28,7 @@ public class plyrMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeElapsed = 0;
         canvasExists = false;
         animationDone = true;
         turnNumber = 0;
@@ -47,13 +49,15 @@ public class plyrMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeElapsed += Time.deltaTime;
+
         var plyrPosition = transform.parent.transform.position;
 
         //See if both the characters are on their goals, and if so, start the timer
         if (selected && animationDone && sameGoal.CheckForPlayer() && sameGoal.otherGoal.CheckForPlayer())
         {
             selected = false;
-            Debug.Log("Level Complete!");
+            Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex + " completed in " + timeElapsed + " seconds.");
             Instantiate(Resources.Load("Prefabs/endLevelTimer", typeof(GameObject)));
         }
 
